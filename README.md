@@ -30,11 +30,13 @@ Edit the MongoDBClient in the app.py file
 
 run the command  docker-compose up
 
-Open browser to http://localhost:5000/
+Wait a while for containers to build and Mongo DB to load data.
 
-Enter the search criteria and select the search button
+Open a browser to http://localhost:5000/
 
-View results
+Enter the search criteria and select the search button.
+
+View results!
 
 ## File Structure
 
