@@ -1,0 +1,48 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Britney Tweets Results</title>
+    </head>
+    <body>
+
+        <div>
+            <p>
+                <b>Britney Tweet Search Results:</b></br></br>
+                Top Author: <a href="https://x.com/{{brit_df['author_handle'].mode().values[0]}}">{{brit_df['author_handle'].mode().values[0]}}</a></br>
+                Number of unique authors: {{brit_df['author_id'].nunique()}}</br>
+                Average Like Count: {{brit_df["like_count"].dropna().mean().round(0)}}</br>
+                Most Liked Tweet: {{brit_df['text'].loc[brit_df["like_count"].mode().values[0]]}}</br>
+            </p>
+        </div>
+        <div>
+            {% if hourplot %}
+                <img src="data:image/png;base64,{{hourplot}}">
+            {% endif %}
+
+        </div>
+        <div>
+            {% if dayplot %}
+                <img src="data:image/png;base64,{{dayplot}}">
+            {% endif %}
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>Place Ids</th>
+
+                </tr>
+                {% for row in brit_df['place_id'].dropna().unique() %}
+                <tr>
+                    <td>{{row}}</td>
+                </tr>
+                {% endfor %}
+            
+            </table>
+        </div>
+    <div>
+        <a href="javascript:history.back()">Back</a>
+    </div>
+    </body>
+</html>
