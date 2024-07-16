@@ -2,5 +2,6 @@
 <form action="{{ url_for("brit_search")}}" method="post">
     <label for="brit_search">Search for text in Britney Tweets:</label></br>
     <input type="text" id="brit_search" name="bsearch" placeholder="search_value"></br>
+    <p>{{message}}</p>
     <button type="submit">Search</button>
 </form>

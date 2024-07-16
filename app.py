@@ -16,7 +16,7 @@ app = Flask(__name__)
 def get_db():
     """ Return a mongodb client """
     client = MongoClient(
-                        host='localhost',
+                        host='brit_mongodb',
                         port=27017,
                         username='root',
                         password='pass',
@@ -47,10 +47,11 @@ def brit_search():
     # getting input with name = bsearch in HTML form
     search_value = request.form.get('bsearch')
     if search_value == '':
-        return render_template('index.html')
+        return render_template('index.html', message='Search Value required')
     # get a dataframe from mongo query of search term
     df = get_britney_df(search_value)
-
+    if df is None:
+        return render_template('index.html', message='No data returned')
     # clean some data
     # convert creaedt_at to datatime type
     df['created_at'] = pd.to_datetime(df['created_at'],

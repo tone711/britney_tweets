@@ -3,9 +3,16 @@ britney_tweets is a flask and mongodb app that allows searching for text of twee
 
 ## Installation
 
+Data file - britney_twitter_data.tsv
+Docker installed
+
 ## Files
 
 ## Running
+
+docker-compose up
+
+
 
 ## Future Enhancements
 
